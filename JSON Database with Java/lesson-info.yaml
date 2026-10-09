@@ -1,0 +1,8 @@
+type: framework
+content:
+  - Create a database
+  - Connect it to a server
+  - Add new functionalities
+  - Start work with JSON
+  - Manage multiple requests
+  - Store JSON objects in your database

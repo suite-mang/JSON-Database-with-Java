@@ -1,0 +1,18 @@
+type: hyperskill
+title: JSON Database with Java
+language: English
+summary: <p>Acquire skills of working with JSON to use this tool as part of your work
+  as a software developer. You will create a functional server that exchanges data
+  with a web browser and handles multiple requests.</p><br/><br/>Learn more at <a
+  href="https://hyperskill.org/projects/65?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/65</a>
+programming_language: Java
+programming_language_version: 11
+content:
+  - JSON Database with Java
+additional_files:
+  - name: build.gradle
+    visible: true
+  - name: settings.gradle
+    visible: true
+mode: Study
+yaml_version: 5

@@ -1,0 +1,11 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Database files are created by the server at runtime
+**/src/server/data/db.json

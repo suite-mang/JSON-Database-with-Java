@@ -1,0 +1,71 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>A JSON database is a single-file database that stores information in JSON format. It is typically accessed remotely over the Internet.</p>
+<p>In this stage, you will simulate a database that can store text information in a string array of fixed size 1000. Initially, each cell (or element) in the database contains an empty string. Users will be able to perform three primary actions: saving strings to cells, reading information from cells, and deleting information from cells. When a string is deleted, the corresponding cell should revert to containing an empty string.</p>
+<p>Users can interact with the database using the following commands: <code class="java">set</code>, <code class="java">get</code>, and  <code class="java">delete</code>.</p>
+<h5 id="objectives">Objectives</h5>
+<ol>
+<li><code class="java">set</code> command:
+
+	<ul>
+<li>Syntax: <code class="java">set &lt;index&gt; &lt;text&gt;</code></li>
+<li>Function: Saves the specified text to the cell at the given index (1-1000).</li>
+<li>Output: If the index is out of bounds, the program should output <code class="java">ERROR</code>. Otherwise, it should output <code class="java">OK</code>. If the specified cell already contains information, it should be overwritten.</li>
+</ul>
+</li>
+<li><code class="java">get</code> command:
+	<ul>
+<li>Syntax: <code class="java">get &lt;index&gt;</code></li>
+<li>Function: Retrieves the text from the cell at the given index.</li>
+<li>Output: If the cell is empty or the index is out of bounds, the program should output <code class="java">ERROR</code>. Otherwise, it should output the content of the cell.</li>
+</ul>
+</li>
+<li><code class="java">delete</code> command:
+	<ul>
+<li>Syntax: <code class="java">delete &lt;index&gt;</code></li>
+<li>Function: Deletes the text from the cell at the given index.</li>
+<li>Output: If the index is out of bounds, the program should output <code class="java">ERROR</code>. Otherwise, it should output <code class="java">OK</code>. If the cell is already empty, no other action is needed. It should just output <code class="java">OK</code>.</li>
+</ul>
+</li>
+<li><code class="java">exit</code> command: 
+	<ul>
+<li>Syntax: <code class="java">exit</code></li>
+<li>Function: Terminates the program.</li>
+</ul>
+</li>
+</ol>
+<p></p><div class="alert alert-primary">
+<p><strong>Note: </strong>The server and the client are different programs that run separately. Your server should run from the <code class="java">main</code> method of the <code class="java">Main</code> class in the <code class="java">/server</code> package, and the client should run from the <code class="java">main</code> method of the <code class="java">Main</code> class in the <code class="java">/client</code> package. To test your program, you should run the server first so a client can connect to the server.</p></div>
+<h5 id="example">Example</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<pre><code class="language-no-highlight">&gt; get 1
+ERROR
+&gt; set 1 Hello world!
+OK
+&gt; set 1 HelloWorld!
+OK
+&gt; get 1
+HelloWorld!
+&gt; delete 1
+OK
+&gt; delete 1
+OK
+&gt; get 1
+ERROR
+&gt; set 55 Some text here
+OK
+&gt; get 55
+Some text here
+&gt; get 56
+ERROR
+&gt; delete 55
+OK
+&gt; delete 56
+OK
+&gt; delete 100
+OK
+&gt; delete 1001
+ERROR
+&gt; exit
+</code></pre>
+</div>

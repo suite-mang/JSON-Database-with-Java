@@ -1,0 +1,63 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>In this stage, you will build upon the functionality of the program that you wrote in the first stage. The server should be able to receive messages with the operations <code class="java">get</code>, <code class="java">set</code>, and <code class="java">delete</code>, each with an index of the cell.</p>
+<p>For now, there is no need to save the database to a file on the hard drive, so if the server reboots, all the data in the database will be lost. The server should serve one client at a time in a loop, and the client should only send one request to the server, get one reply, and exit. After that, the server should wait for another connection from a client.</p>
+<p>To send a request to the server, the client should get all the information through command-line arguments. There is a useful library called <code class="java">JCommander</code> to parse all the arguments. It is included in our project setup, so you can use it without the need for any installation yourself. Before you get started with it, we recommend you check out a <a href="http://jcommander.org" rel="nofollow noopener noreferrer" target="_blank">JCommander tutorial</a>.</p>
+<p>The arguments will be passed to the client in the following format:</p>
+<p><code class="java">java Main -t &lt;type&gt; -i &lt;index&gt; [-m &lt;message&gt;]</code></p>
+<ul>
+<li><code class="java">-t</code> is the type of the request.</li>
+<li><code class="java">-i</code> is the index of the cell.</li>
+<li><code class="java">-m</code> is the value/message to save in the database (only needed for <code class="java">set</code> requests).</li>
+</ul>
+<p>For example: <code class="java">java Main -t set -i 148 -m "Here is some text to store on the server"</code></p>
+<h5 id="objectives">Objectives</h5>
+<ol>
+<li>Implement the ability for the server to handle <code class="java">get</code>, <code class="java">set</code>, and <code class="java">delete</code> operations with an index.</li>
+<li>Ensure the server can serve one client at a time in a loop.</li>
+<li>Since the server cannot shut down on its own and testing requires the program to stop at some point, you should implement a way to stop the server (after closing the socket), when the client sends an <code class="java">exit</code> request. Note that in a normal situation, this behavior should not be allowed.</li>
+<li>The client should send requests to the server using command-line arguments. These arguments include the type of the request (<code class="java">set</code>, <code class="java">get</code>, or <code class="java">delete</code>), the index of the cell, and, in the case of the <code class="java">set</code> request, a text value/message.</li>
+</ol>
+<p></p><div class="alert alert-primary">
+<p><strong>Note:</strong> The server and the client are different programs that run separately. Your server should run from the <code class="java">main</code> method of the <code class="java">/server/Main</code> class, and the client should run from the <code class="java">main</code> method of the <code class="java">/client/Main</code> class.</p></div>
+<h5 id="example">Example</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p>Starting the server:</p>
+<pre><code class="language-no-highlight">&gt; java Main
+Server started!</code></pre>
+<p>Starting the clients:</p>
+<pre><code class="language-no-highlight">&gt; java Main -t get -i 1
+Client started!
+Sent: get 1
+Received: ERROR</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t set -i 1 -m "Hello world!"
+Client started!
+Sent: set 1 Hello world!
+Received: OK</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t set -i 1 -m HelloWorld!
+Client started!
+Sent: set 1 HelloWorld!
+Received: OK
+</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t get -i 1
+Client started!
+Sent: get 1
+Received: HelloWorld!
+</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t delete -i 1
+Client started!
+Sent: delete 1
+Received: OK</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t delete -i 1
+Client started!
+Sent: delete 1
+Received: OK</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t get -i 1
+Client started!
+Sent: get 1
+Received: ERROR</code></pre>
+<pre><code class="language-no-highlight">&gt; java Main -t exit
+Client started!
+Sent: exit
+Received: OK</code></pre>
+</div>
